@@ -8,10 +8,10 @@ var otherFiles = ['sample/**/*.html', 'sample/**/*.css'];
 
 function run6to5(files) {
     return gulp.src(files)
-        .pipe(to5())
         .pipe(rename(function(path) {
             path.basename = path.basename.replace('.es6', '');
         }))
+        .pipe(to5())
         .pipe(gulp.dest('dist'));
 }
 
@@ -20,10 +20,7 @@ gulp.task('6to5', function() {
 });
 
 gulp.task('watch-6to5', function() {
-    return gulp.watch(to5Files)
-        .on('change', function(e) {
-            run6to5(e.path);
-        });
+    return gulp.watch(to5Files, ['6to5']);
 });
 
 gulp.task('copy', function() {
@@ -36,7 +33,10 @@ gulp.task('watch-copy', function() {
 });
 
 gulp.task('connect', function() {
-    connect.server({livereload: true});
+    connect.server({
+        root: 'dist',
+        livereload: true,
+    });
 });
 
-gulp.task('dev', ['6to5', 'connect', 'watch-6to5']);
+gulp.task('dev', ['6to5', 'copy', 'connect', 'watch-6to5', 'watch-copy']);
