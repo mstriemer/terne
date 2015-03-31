@@ -13,7 +13,7 @@ Get this HTML on the page, you can use an HTML Import if that's
 supported.
 
 ```html
-<terne-element name="my-element">
+<terne-element name="hello-terne">
   <template>
     <h1>This is my element!</h1>
     <p>Hello, <content select=".you"></content></p>
@@ -24,19 +24,20 @@ supported.
 Define your element.
 
 ```js
-class MyElement extends HTMLElement {
+class HelloTerne extends HTMLElement {
   createdCallback() {
     Terne.init(this);
     console.log(this.querySelector('p').textContent);
   }
 }
-document.registerElement('my-element', MyElement);
+document.registerElement('hello-terne', HelloTerne);
 ```
 
 ### Use an element
 
 ```js
-<my-element>
-  <div class="you">Mark</div>
-</my-element>
+<hello-terne>
+  <div class="you">Terne</div>
+</hello-terne>
+
 ```
