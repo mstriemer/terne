@@ -1,5 +1,6 @@
 .terne-bar-wrapper {
     background-color: purple;
+    box-sizing: border-box;
     color: white;
     display: flex;
     padding: 20px 10px;

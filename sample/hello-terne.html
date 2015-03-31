@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Terne</title>
+        <script src="../terne.js"></script>
+        <script>
+(function() {
+    'use strict';
+    class HelloTerne extends HTMLElement {
+        createdCallback() {
+            Terne.init(this);
+            console.log(this.querySelector('p').textContent);
+        }
+    }
+    document.registerElement('hello-terne', HelloTerne);
+})();
+        </script>
+    </head>
+    <body>
+        <terne-element name="hello-terne">
+            <template>
+                <h1>This is my element!</h1>
+                <p>Hello, <content select=".you"></content></p>
+            </template>
+        </terne-element>
+
+        <hello-terne>
+            <div class="you">Terne</div>
+        </hello-terne>
+    </body>
+</html>
