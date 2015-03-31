@@ -1,4 +1,4 @@
-describe('Alloy.init', function() {
+describe('Terne.init', function() {
     'use strict';
 
     function createElement(html) {
@@ -8,72 +8,72 @@ describe('Alloy.init', function() {
     }
 
     it('renders the template', function() {
-        var root = createElement(`<alloy-element name="alloy-init-base">
+        var root = createElement(`<terne-element name="terne-init-base">
             <template>
-                <h1>Alloy Test Element</h1>
+                <h1>Terne Test Element</h1>
                 <p>This is a test.</p>
             </template>
-        </alloy-element>`);
+        </terne-element>`);
         document.body.appendChild(root);
 
-        class AlloyInitBase extends HTMLElement {
+        class TerneInitBase extends HTMLElement {
             createdCallback() {
-                Alloy.init(this);
+                Terne.init(this);
             }
         }
-        document.registerElement('alloy-init-base', AlloyInitBase);
+        document.registerElement('terne-init-base', TerneInitBase);
 
-        var el = document.createElement('alloy-init-base');
+        var el = document.createElement('terne-init-base');
         assert.equal(el.children.length, 2);
-        assert.equal(el.querySelector('h1').textContent, 'Alloy Test Element');
+        assert.equal(el.querySelector('h1').textContent, 'Terne Test Element');
         assert.equal(el.querySelector('p').textContent, 'This is a test.');
     });
 
     it('can pull content from the template', function() {
-        var root = createElement(`<alloy-element name="alloy-init-content">
+        var root = createElement(`<terne-element name="terne-init-content">
             <template>
-                <h1>Alloy Test Element</h1>
+                <h1>Terne Test Element</h1>
                 <p><content></content></p>
             </template>
-        </alloy-element>`);
+        </terne-element>`);
         document.body.appendChild(root);
 
-        class AlloyInitContent extends HTMLElement {
+        class TerneInitContent extends HTMLElement {
             createdCallback() {
-                Alloy.init(this);
+                Terne.init(this);
             }
         }
-        document.registerElement('alloy-init-content', AlloyInitContent);
+        document.registerElement('terne-init-content', TerneInitContent);
 
-        var el = createElement(`<alloy-init-content>This text goes in the p.</alloy-init-content>`);
+        var el = createElement(`<terne-init-content>This text goes in the p.</terne-init-content>`);
         assert.equal(el.children.length, 2);
-        assert.equal(el.querySelector('h1').textContent, 'Alloy Test Element');
+        assert.equal(el.querySelector('h1').textContent, 'Terne Test Element');
         assert.equal(el.querySelector('p').textContent,
                      'This text goes in the p.');
     });
 
     it('can select content from the template', function() {
-        var root = createElement(`<alloy-element name="alloy-init-select">
+        var root = createElement(`<terne-element name="terne-init-select">
             <template>
                 <h1><content select="h1"></content></h1>
                 <p><content select="p"></content></p>
             </template>
-        </alloy-element>`);
+        </terne-element>`);
         document.body.appendChild(root);
 
-        class AlloyInitSelect extends HTMLElement {
+        class TerneInitSelect extends HTMLElement {
             createdCallback() {
-                Alloy.init(this);
+                Terne.init(this);
             }
         }
-        document.registerElement('alloy-init-select', AlloyInitSelect);
+        document.registerElement('terne-init-select', TerneInitSelect);
 
-        var el = createElement(`<alloy-init-select>
+        var el = createElement(`<terne-init-select>
             <h1>The h1 has some text</h1>
             <p>The p has some text.</p>
             <div>This div is ignored.</div>
             So is this content on its own.
-        </alloy-init-select>`);
+        </terne-init-select>`);
         assert.equal(el.children.length, 2);
         assert.equal(el.querySelector('h1').textContent,
                      'The h1 has some text');

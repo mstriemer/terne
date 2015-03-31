@@ -7,27 +7,27 @@
         }).join('');
     }
 
-    window.Alloy = {
+    window.Terne = {
         elements: {},
         init: function(element) {
             var elementName = element.tagName.toLowerCase();
-            var alloy = Alloy.elements[elementName];
-            element.innerHTML = alloy.render(element);
+            var terne = Terne.elements[elementName];
+            element.innerHTML = terne.render(element);
         },
     };
 
-    class AlloyElement extends HTMLElement {
+    class TerneElement extends HTMLElement {
         createdCallback() {
             this.name = this.getAttribute('name');
             if (!this.name) {
                 throw new Error('name is required');
-            } else if (this.name in AlloyElement) {
+            } else if (this.name in Terne.elements) {
                 throw new Error(`element ${this.name} is already defined`);
             }
             this.template = this.querySelector('template');
             this.content = this.template.content;
             this.hasContent = !!this.content.querySelector('content');
-            Alloy.elements[this.name] = this;
+            Terne.elements[this.name] = this;
         }
         render(content) {
             var template = this.content.cloneNode(true);
@@ -46,5 +46,5 @@
         }
     }
 
-    document.registerElement('alloy-element', AlloyElement);
+    document.registerElement('terne-element', TerneElement);
 })();

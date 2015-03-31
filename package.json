@@ -15,9 +15,9 @@
     "karma-mocha": "^0.1.10",
     "mocha": "^2.2.1"
   },
-  "name": "alloy",
+  "name": "terne",
   "version": "0.1.0",
-  "main": "dist/alloy.js",
+  "main": "dist/terne.js",
   "dependencies": {
     "6to5": "^3.3.9",
     "gulp-6to5": "^3.0.0",

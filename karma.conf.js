@@ -15,7 +15,7 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      'alloy.es6.js',
+      'terne.js',
       'sample/**/*.js',
       'tests/*.js'
     ],
