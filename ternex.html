@@ -4,21 +4,9 @@
         <script src="ternex.js"></script>
         <script src="terne-jsx.js"></script>
         <script src="sample/terne-list/terne-list.js"></script>
+        <script src="sample/terne-item.js"></script>
     </head>
     <body>
-    <script>
-window.itemStore = {
-    items: [],
-    addItem(item) {
-        this.items.push(item);
-        this.onChange();
-    },
-};
-itemStore.onChange = function() {
-    Terne.render(Terne.createElement('terne-list', {items: itemStore.items}),
-                 document.body);
-};
-itemStore.onChange();
-    </script>
+        <script src="sample/ternex-sample.js"></script>
     </body>
 </html>

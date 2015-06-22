@@ -50,9 +50,16 @@ window.Terne = {
                 console.log('createdCallback');
                 this.handler = new Handler();
                 this.handler.props = {};
+                this.handler.on = this.on.bind(this);
+                this.handler.trigger = this.trigger.bind(this);
+                this.handler.querySelector = this.querySelector.bind(this);
+                this.handler.querySelectorAll = this.querySelectorAll.bind(this);
                 T.each(this.attributes, (attr) => {
                     this.handler.props[attr.name] = JSON.parse(attr.value);
                 });
+                if (typeof this.handler.init === 'function') {
+                    this.handler.init();
+                }
             }
             attributeChangedCallback(name, oldValue, newValue) {
                 console.log('attributeChangedCallback');
@@ -69,7 +76,7 @@ window.Terne = {
                 this.innerHTML = '';
                 this.appendChild(content);
             }
-            dispatch(eventName, payload) {
+            trigger(eventName, payload) {
                 this.dispatchEvent(new TerneCustomEvent(eventName, payload));
             }
             on(eventName, callback) {
