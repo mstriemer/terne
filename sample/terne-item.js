@@ -8,8 +8,9 @@ Terne.registerElement('terne-item', class {
     init() {
         this.on('submit', (e) => {
             e.preventDefault();
-            this.trigger('create-item', this.querySelector('input').value);
-            this.value = '';
+            let input = this.querySelector('input');
+            this.trigger('create-item', input.value);
+            input.value = '';
         });
     }
 });
