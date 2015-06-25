@@ -5,3 +5,8 @@ Terne.registerElement('terne-list', class {
         </ul>;
     }
 });
+Terne.registerElement('terne-list-count', class {
+    render() {
+        return <div>{"There are " + this.props.items.length.toString() + " items"}</div>;
+    }
+});

@@ -54,6 +54,7 @@ window.Terne = {
                 this.handler.trigger = this.trigger.bind(this);
                 this.handler.querySelector = this.querySelector.bind(this);
                 this.handler.querySelectorAll = this.querySelectorAll.bind(this);
+                this.handler.root = this;
                 T.each(this.attributes, (attr) => {
                     this.handler.props[attr.name] = JSON.parse(attr.value);
                 });
@@ -84,4 +85,8 @@ window.Terne = {
             }
         });
     },
+};
+
+window.React = {
+    createElement: Terne.createElement,
 };
