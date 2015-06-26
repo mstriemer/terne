@@ -50,6 +50,7 @@ window.Terne = {
         document.registerElement(name, class extends HTMLElement {
             createdCallback() {
                 console.log('createdCallback');
+                this.awaitingRender = false;
                 this.handler = new Handler();
                 this.handler.props = {};
                 this.handler.on = this.on.bind(this);
@@ -67,7 +68,13 @@ window.Terne = {
             attributeChangedCallback(name, oldValue, newValue) {
                 console.log('attributeChangedCallback');
                 this.handler.props[name] = JSON.parse(newValue);
-                this.render();
+                if (!this.awaitingRender) {
+                    this.awaitingRender = true;
+                    requestAnimationFrame(() => {
+                        this.render();
+                        this.awaitingRender = false;
+                    });
+                }
             }
             attachedCallback() {
                 console.log('attachedCallback');
