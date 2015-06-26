@@ -1,0 +1,20 @@
+{
+  "name": "terne",
+  "main": "ternex.js",
+  "version": "0.1.0",
+  "homepage": "https://github.com/mstriemer/terne",
+  "authors": [
+    "Mark Striemer"
+  ],
+  "description": "A thing for making web components with JSX.",
+  "license": "MPL",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+  }
+}
