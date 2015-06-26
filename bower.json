@@ -1,7 +1,7 @@
 {
   "name": "terne",
   "main": "ternex.js",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "homepage": "https://github.com/mstriemer/terne",
   "authors": [
     "Mark Striemer"
