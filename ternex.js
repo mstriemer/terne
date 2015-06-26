@@ -16,9 +16,11 @@ window.Terne = {
     createElement(tagName, attrs, ...content) {
         console.log('createElement');
         let tag = document.createElement(tagName);
+        let setJSON = tagName.indexOf('-') !== -1;
         if (attrs) {
             Object.keys(attrs).forEach((name) => {
-                tag.setAttribute(name, JSON.stringify(attrs[name]));
+                let value = setJSON ? JSON.stringify(attrs[name]) : attrs[name];
+                tag.setAttribute(name, value);
             });
         }
         if (content) {
